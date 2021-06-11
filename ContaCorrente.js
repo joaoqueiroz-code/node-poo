@@ -1,10 +1,33 @@
+import { Cliente } from "./Cliente.js";
+
 // Classe dos dados do banco do cliente.
 export class ContaCorrente {
-    cliente;
+
+    static numeroDeContas = 0;
+    _cliente;
+
+    set cliente(valorNovo) {
+        if(valorNovo instanceof Cliente){
+            this._cliente = valorNovo;
+        }
+    }
+
     agencia;
 
-    _saldo;
-    
+    get cliente() {
+        return this._cliente;
+    }
+
+    _saldo = 0;
+    get saldo() {
+        return this._saldo;
+    }
+
+    constructor(agencia, cliente){
+        this._cliente = cliente;
+        this.agencia = agencia;
+        ContaCorrente.numeroDeContas++;
+    }
 
     sacar(valor) {
         if(this._saldo >= valor) {
@@ -24,4 +47,5 @@ export class ContaCorrente {
         conta.depositar(valorSacado);
          
     }
+
 }
