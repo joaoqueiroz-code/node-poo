@@ -1,8 +1,5 @@
 // Classe dos dados do cliente.
 export class Cliente{
-    nome;
-    _cpf;
-    
     get get(){
         return this._cpf;
 
